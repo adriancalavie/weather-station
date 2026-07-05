@@ -1,14 +1,19 @@
-import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
 import tsPaths from "vite-tsconfig-paths";
-import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   server: {
     port: 5173,
   },
   plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+    }),
     react(),
     mkcert({
       source: "coding",
@@ -17,13 +22,13 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
-        },
-      },
-    },
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks: {
+    //       "react-vendor": ["react", "react-dom"],
+    //     },
+    //   },
+    // },
   },
   optimizeDeps: {
     include: ["react/jsx-runtime"],

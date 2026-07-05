@@ -15,7 +15,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "sourceMap": true,
-    "types": ["vite/client", "@total-typescript/ts-reset"],
+    "types": ["vite/client", "@total-typescript/ts-reset", "bun"],
     "paths": {
       "@/*": ["./src/*"]
     }
