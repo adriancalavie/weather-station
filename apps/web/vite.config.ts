@@ -6,26 +6,6 @@ import mkcert from "vite-plugin-mkcert";
 import tsPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  server: {
-    port: 5173,
-    proxy: {
-      "/api": "http://localhost:3001",
-    },
-  },
-  plugins: [
-    tanstackRouter({
-      target: "react",
-      autoCodeSplitting: true,
-      quoteStyle: "double",
-      semicolons: true,
-    }),
-    react(),
-    mkcert({
-      source: "coding",
-    }),
-    tsPaths(),
-    tailwindcss(),
-  ],
   build: {
     // rollupOptions: {
     //   output: {
@@ -37,5 +17,25 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ["react/jsx-runtime"],
+  },
+  plugins: [
+    tanstackRouter({
+      autoCodeSplitting: true,
+      quoteStyle: "double",
+      semicolons: true,
+      target: "react",
+    }),
+    react(),
+    mkcert({
+      source: "coding",
+    }),
+    tsPaths(),
+    tailwindcss(),
+  ],
+  server: {
+    port: 5173,
+    proxy: {
+      "/api": "http://localhost:3001",
+    },
   },
 });

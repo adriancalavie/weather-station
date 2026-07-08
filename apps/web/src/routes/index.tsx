@@ -7,8 +7,8 @@ const HomeSearchSchema = z.object({
 });
 
 export const Route = createFileRoute("/")({
-  validateSearch: HomeSearchSchema,
   component: Index,
+  validateSearch: HomeSearchSchema,
   loaderDeps: ({ search: { city } }) => ({ city }),
   loader: async ({ abortController, deps: { city } }) => {
     if (!city) {
@@ -19,8 +19,7 @@ export const Route = createFileRoute("/")({
       signal: abortController.signal,
     });
 
-    if (!res.ok)
-      throw new Response("Failed to load weather", { status: res.status });
+    if (!res.ok) throw new Response("Failed to load weather", { status: res.status });
     return res.json();
   },
 });
@@ -40,7 +39,7 @@ function Index() {
     const result = HomeSearchSchema.safeParse(raw);
 
     if (result.success) {
-      navigate({ to: "/", search: result.data });
+      navigate({ search: result.data, to: "/" });
     }
   };
 
@@ -50,22 +49,19 @@ function Index() {
       <form className="flex flex-col" onSubmit={handleSubmit}>
         <label htmlFor="cityInput">Enter yout city name</label>
         <input
-          id="cityInput"
-          type="text"
-          required
-          name="city"
-          minLength={2}
           autoCapitalize="words"
-          placeholder="New York"
           autoComplete="shipping address-level2"
           defaultValue={city ?? ""}
+          id="cityInput"
+          minLength={2}
+          name="city"
+          placeholder="New York"
+          required
+          type="text"
         ></input>
         <output>
           {weather ? (
-            <details
-              open={detailsOpen}
-              onChange={(prev) => setDetailsOpen(!prev)}
-            >
+            <details onChange={(prev) => setDetailsOpen(!prev)} open={detailsOpen}>
               <summary>Result</summary>
               <pre>
                 <code>{JSON.stringify(weather, null, 2)}</code>

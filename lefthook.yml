@@ -11,8 +11,8 @@ pre-commit:
       run: bun run sort-package-json
 
     - name: lint
-      glob: "*"
-      run: bun run biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx}"
+      run: bun run eslint --fix {staged_files}
 
     - name: type check
       run: bun run check-types

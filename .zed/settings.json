@@ -1,0 +1,34 @@
+{
+  "languages": {
+    "CSS": {
+      "formatter": "prettier",
+    },
+    "HTML": {
+      "formatter": "prettier",
+    },
+    "JSON": {
+      "formatter": "prettier",
+    },
+    "JSONC": {
+      "formatter": "prettier",
+    },
+    "JavaScript": {
+      "formatter": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TSX": {
+      "formatter": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TypeScript": {
+      "formatter": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+  },
+}
