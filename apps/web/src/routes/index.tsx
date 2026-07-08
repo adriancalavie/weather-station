@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import { z } from "zod";
 
 const HomeSearchSchema = z.object({
@@ -26,11 +27,27 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const weather = Route.useLoaderData();
+  const { city } = Route.useSearch();
+  const navigate = useNavigate();
+
+  const [detailsOpen, setDetailsOpen] = useState(false);
+
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const raw = Object.fromEntries(formData);
+    const result = HomeSearchSchema.safeParse(raw);
+
+    if (result.success) {
+      navigate({ to: "/", search: result.data });
+    }
+  };
 
   return (
     <div className="p-2">
       <h3>Welcome to Weather Station</h3>
-      <form className="flex flex-col">
+      <form className="flex flex-col" onSubmit={handleSubmit}>
         <label htmlFor="cityInput">Enter yout city name</label>
         <input
           id="cityInput"
@@ -41,10 +58,14 @@ function Index() {
           autoCapitalize="words"
           placeholder="New York"
           autoComplete="shipping address-level2"
+          defaultValue={city ?? ""}
         ></input>
         <output>
           {weather ? (
-            <details>
+            <details
+              open={detailsOpen}
+              onChange={(prev) => setDetailsOpen(!prev)}
+            >
               <summary>Result</summary>
               <pre>
                 <code>{JSON.stringify(weather, null, 2)}</code>
