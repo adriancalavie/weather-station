@@ -15,7 +15,7 @@ export default tseslint.config(
   // Global ignores
   includeIgnoreFile(gitignorePath),
   {
-    ignores: ["**/dist/**", "**/.turbo/**", "**/node_modules/**", "**/routeTree.gen.ts"],
+    ignores: ["**/dist/**", "**/.turbo/**", "**/node_modules/**"],
   },
 
   // Base config: all JS/TS files
