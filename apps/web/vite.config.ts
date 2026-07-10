@@ -3,7 +3,6 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
-import tsPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   build: {
@@ -29,9 +28,11 @@ export default defineConfig({
     mkcert({
       source: "coding",
     }),
-    tsPaths(),
     tailwindcss(),
   ],
+  resolve: {
+    tsconfigPaths: true,
+  },
   server: {
     port: 5173,
     proxy: {
