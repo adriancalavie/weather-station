@@ -17,13 +17,13 @@
     "zod": "^4.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "4.3.2",
+    "@tailwindcss/vite": "4.3.3",
     "@tanstack/router-plugin": "^1.168.19",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.3",
     "lightningcss": "1.32.0",
-    "tailwindcss": "4.3.2",
+    "tailwindcss": "4.3.3",
     "vite": "8.1.5",
     "vite-plugin-mkcert": "2.1.0"
   }
