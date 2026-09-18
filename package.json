@@ -27,7 +27,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "is-ci": "4.1.0",
     "lefthook": "2.1.14",
-    "prettier": "3.9.7",
+    "prettier": "3.9.8",
     "prettier-plugin-packagejson": "3.0.2",
     "prettier-plugin-tailwindcss": "0.8.1",
     "sort-package-json": "4.0.0",
