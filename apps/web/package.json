@@ -11,8 +11,8 @@
   "dependencies": {
     "@tanstack/react-router": "^1.170.17",
     "@tanstack/react-router-devtools": "^1.167.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "shared": "workspace:*",
     "zod": "^4.0.0"
   },
